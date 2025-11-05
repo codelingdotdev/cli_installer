@@ -55,17 +55,28 @@ main() {
     mkdir -p "$INSTALL_DIR"
     
     # Download the binary
-    DOWNLOAD_URL="$BASE_URL/$BINARY_NAME"
+    DOWNLOAD_URL="$BASE_URL/$BINARY_NAME.tar.gz"
     echo "Downloading from: $DOWNLOAD_URL"
     
     if command -v curl >/dev/null 2>&1; then
-        curl -fL "$DOWNLOAD_URL" -o "$BINARY_PATH"
+        curl -fL "$DOWNLOAD_URL" -o "$BINARY_PATH.tar.gz"
     elif command -v wget >/dev/null 2>&1; then
-        wget -q "$DOWNLOAD_URL" -O "$BINARY_PATH"
+        wget -q "$DOWNLOAD_URL" -O "$BINARY_PATH.tar.gz"
     else
         echo "Error: Neither curl nor wget is available. Please install one of them."
         exit 1
     fi
+    
+    # Extract the binary
+    echo "Extracting..."
+    TEMP_DIR=$(mktemp -d)
+    tar -xzf "$BINARY_PATH.tar.gz" -C "$TEMP_DIR"
+    
+    # Move the extracted binary to the correct location
+    mv "$TEMP_DIR/$BINARY_NAME" "$BINARY_PATH"
+    
+    rm -rf "$TEMP_DIR"
+    rm "$BINARY_PATH.tar.gz"
     
     # Make it executable
     chmod +x "$BINARY_PATH"
