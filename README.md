@@ -1,6 +1,12 @@
 # Codeling CLI Installer
 
-This repository contains the installation script for the Codeling CLI.
+This repository contains the installation script for the [Codeling](https://codeling.dev) CLI.
+
+The CLI allows you to submit lessons for local courses straight from your terminal.
+
+More information can be found here:
+- [Codeling](https://codeling.dev)
+- [Codeling Course Platform](https://app.codeling.dev) 
 
 ## Installation
 
