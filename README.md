@@ -10,11 +10,15 @@ More information can be found here:
 
 ## Installation
 
+### 1. Install the CLI
+
 To install the Codeling CLI, run the following command in your terminal:
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/codelingdotdev/cli_installer/refs/heads/main/src/install.sh | bash
 ```
+
+### 2. Verify installation
 
 After installation completes, verify it's working by running:
 
@@ -23,6 +27,12 @@ codeling version
 ```
 
 You should see the current CLI version printed to your terminal.
+
+### 3. Login
+
+Run `codeling login` to authenticate your Codeling account.
+
+You'll be prompted to enter your auth key which you an find on your [Codeling Profile](https://app.codeling.dev/profile).
 
 ## Usage
 
