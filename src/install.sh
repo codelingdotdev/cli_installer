@@ -54,14 +54,14 @@ main() {
     echo "Creating installation directory: $INSTALL_DIR"
     mkdir -p "$INSTALL_DIR"
     
-    # Download the binary
-    DOWNLOAD_URL="$BASE_URL/$BINARY_NAME.tar.gz"
+    # Download the binary (with cache busting)
+    DOWNLOAD_URL="$BASE_URL/$BINARY_NAME.tar.gz?t=$(date +%s)"
     echo "Downloading from: $DOWNLOAD_URL"
     
     if command -v curl >/dev/null 2>&1; then
-        curl -fL "$DOWNLOAD_URL" -o "$BINARY_PATH.tar.gz"
+        curl -fL -H "Cache-Control: no-cache" -H "Pragma: no-cache" "$DOWNLOAD_URL" -o "$BINARY_PATH.tar.gz"
     elif command -v wget >/dev/null 2>&1; then
-        wget -q "$DOWNLOAD_URL" -O "$BINARY_PATH.tar.gz"
+        wget -q --no-cache --header="Cache-Control: no-cache" --header="Pragma: no-cache" "$DOWNLOAD_URL" -O "$BINARY_PATH.tar.gz"
     else
         echo "Error: Neither curl nor wget is available. Please install one of them."
         exit 1
