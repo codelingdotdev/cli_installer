@@ -2,11 +2,7 @@
 
 This repository contains the installation script for the [Codeling](https://codeling.dev) CLI.
 
-The CLI allows you to submit lessons for local courses straight from your terminal.
-
-More information can be found here:
-- [Codeling](https://codeling.dev)
-- [Codeling Course Platform](https://app.codeling.dev) 
+The CLI allows you to submit lessons and run tests for local courses straight from your terminal.
 
 ## Installation
 
@@ -36,23 +32,18 @@ You'll be prompted to enter your auth key which you an find on your [Codeling Pr
 
 ## Usage
 
-The Codeling CLI provides the following commands:
-
-### submit
-
-Running submit in a Codeling course folder will run tests against your current lesson for that course. If all tests pass, the lesson will be flagged as complete within the Codeling Web Platform.
+While working on any local Codeling Course, navigate to the project folder, eg:
 
 ```bash
-codeling submit
+cd my_projects/course_rest_design_python_init/
 ```
 
-### version
+When you're ready to submit a lesson:
+- run `codeling submit` which will run tests against your code.
+- If the tests pass, the lesson will be marked as complete in your Codeling account.
+- If the tests fail, read the test output to determine what needs to be fixed in your code.
 
-Outputs the current CLI version. When a new version is available, you will be prompted to install it.
-
-```bash
-codeling version
-```
+Once the tests have passed, you can move to the next lesson on the [Codeling Platform](https://app.codeling.dev).
 
 ## Troubleshooting
 
@@ -96,3 +87,5 @@ If the file exists but the command still doesn't work, manually add it to your P
 ```bash
 export PATH="$HOME/codeling/bin:$PATH"
 ```
+
+Then restart your terminal or `source` your configuration file as outlined above.
